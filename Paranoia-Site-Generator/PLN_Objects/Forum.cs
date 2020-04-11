@@ -66,7 +66,13 @@ namespace Paranoia_Site_Generator
             if (attribute != null)
                 return attribute.Statement;
             else
-                throw new Exception($"SQL Statement not found for { typeof(T).Name }");
+                throw new SqlStatementException( typeof(T).Name );
         }
+    }
+
+    public class SqlStatementException : Exception
+    {
+        public SqlStatementException(string typeName) : base($"SQL Statement not found for { typeName }")
+        { }
     }
 }
