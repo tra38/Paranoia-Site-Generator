@@ -33,7 +33,6 @@ namespace Paranoia_Site_Generator
                 Console.WriteLine($"{element.ForumName} - { element.ForumDesc }; topics: { element.ForumTopics }");
             }
 
-            //conn.Close();
             Console.WriteLine("Done.");
             Console.ReadLine();
         }
