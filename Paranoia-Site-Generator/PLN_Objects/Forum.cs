@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Paranoia_Site_Generator
+﻿namespace Paranoia_Site_Generator
 {
     [SqlStatement("SELECT * FROM phpbb_forums" )]
     public class Forum
