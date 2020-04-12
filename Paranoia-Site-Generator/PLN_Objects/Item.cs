@@ -1,4 +1,4 @@
-﻿namespace Paranoia_Site_Generator.PLN_Objects
+﻿namespace Paranoia_Site_Generator
 {
     [SqlStatement("SELECT * FROM phpbb_ac_items")]
     public class Item
