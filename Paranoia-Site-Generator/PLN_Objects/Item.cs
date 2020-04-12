@@ -1,8 +1,7 @@
-﻿using System;
-namespace Paranoia_Site_Generator.PLN_Objects
+﻿namespace Paranoia_Site_Generator.PLN_Objects
 {
     [SqlStatement("SELECT * FROM phpbb_ac_items")]
-    public class Items
+    public class Item
     {
         public int ItemId;
         public string ItemName;
