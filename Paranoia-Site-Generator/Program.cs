@@ -28,9 +28,18 @@ namespace Paranoia_Site_Generator
 
             var list = Factory.Build<Forum>();
 
+            Console.WriteLine("Forums:");
             foreach (var element in list)
             {
                 Console.WriteLine($"{element.ForumName} - { element.ForumDesc }; topics: { element.ForumTopics }");
+            }
+
+            var itemList = Factory.Build<PotentialItem>();
+
+            Console.WriteLine("Items:");
+            foreach (var element in itemList)
+            {
+                Console.WriteLine($"{element.ItemName} - { element.ItemDescription}; cost: { element.ItemCost }, clearance: { element.ItemClearance }");
             }
 
             Console.WriteLine("Done.");
