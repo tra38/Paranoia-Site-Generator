@@ -15,7 +15,7 @@ namespace Paranoia_Site_Generator
         public int ForumTopics;
         public int ForumLastPostId;
         public int PruneNext;
-        public int PruneEnable;
+        public bool PruneEnable;
         public int AuthView;
         public int AuthRead;
         public int AuthPost;
