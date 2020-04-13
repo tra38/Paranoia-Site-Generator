@@ -22,7 +22,7 @@ namespace Paranoia_Site_Generator
             }
         }
 
-        public static string GetSQLStatement<T>()
+        public static string GetSQLStatement<T>( )
         {
             var attribute = typeof(T).GetCustomAttribute<SqlStatement>(true);
 
