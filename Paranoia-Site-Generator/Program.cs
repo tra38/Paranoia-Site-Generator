@@ -42,6 +42,13 @@ namespace Paranoia_Site_Generator
                 Console.WriteLine($"{element.ItemName} - { element.ItemDescription}; cost: { element.ItemCost }, clearance: { element.ItemClearance }");
             }
 
+            var mutantList = Factory.Build<Mutations>();
+            Console.WriteLine("Mutations:");
+            foreach (var element in mutantList)
+            {
+                Console.WriteLine($"{element.MutationName} - { element.MutationId} - { element.MutationSpecial }");
+            }
+
             Console.WriteLine("Done.");
             Console.ReadLine();
         }
