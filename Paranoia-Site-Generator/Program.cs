@@ -48,6 +48,7 @@ namespace Paranoia_Site_Generator
                 Console.WriteLine($"{element.MutationName} - { element.MutationId} - { element.MutationSpecial }");
             }
 
+            //Use breakpoint here to view all topics
             var posts = Factory.Build<Post>();
             var postsLists = posts.GroupBy( post => new { post.TopicId, post.ForumId } )
                 .Select( group => new
