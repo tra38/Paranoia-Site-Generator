@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Data;
-using MySql.Data.MySqlClient;
+using System.Linq;
 
 namespace Paranoia_Site_Generator
 {
@@ -31,7 +30,7 @@ namespace Paranoia_Site_Generator
             Console.WriteLine("Forums:");
             foreach (var element in list)
             {
-                Console.WriteLine($"{element.ForumName} - { element.ForumDesc }; topics: { element.ForumTopics }");
+                Console.WriteLine($"{element.ForumName} - { element.ForumDesc }; topics: { element.ForumTopics }, Forum Id: { element.ForumId }");
             }
 
             var itemList = Factory.Build<PotentialItem>();
@@ -48,6 +47,16 @@ namespace Paranoia_Site_Generator
             {
                 Console.WriteLine($"{element.MutationName} - { element.MutationId} - { element.MutationSpecial }");
             }
+
+            var posts = Factory.Build<Post>();
+            var postsLists = posts.GroupBy( post => new { post.TopicId, post.ForumId } )
+                .Select( group => new
+                    {
+                        group.Key.TopicId,
+                        group.Key.ForumId,
+                        Posts = group.ToList()
+                    } )
+                .ToList( );
 
             Console.WriteLine("Done.");
             Console.ReadLine();

@@ -1,7 +1,7 @@
 ﻿namespace Paranoia_Site_Generator
 {
     [SqlStatement("SELECT * FROM phpbb_forums" )]
-    public class Forum
+    public class Forum : PLN_Object
     {
         public int ForumId;
         public int CatId;
@@ -25,5 +25,7 @@
         public int AuthVote;
         public int AuthPollCreate;
         public int AuthAttachments;
+
+        public int Id { get => ForumId; }
     }
 }

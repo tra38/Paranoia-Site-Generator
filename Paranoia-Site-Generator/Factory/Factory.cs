@@ -21,7 +21,19 @@ namespace Paranoia_Site_Generator
                 return conn.Query<T>(sqlStatement);
             }
         }
+        /*
+        public static IEnumerable<T> Build<T, U>(string sqlStatement)
+            where T : PLN_Object, new( )
+            where U : PLN_Object, new( )
+        {
+            DefaultTypeMap.MatchNamesWithUnderscores = true;
 
+            using (var conn = new MySqlConnection(ConnectionString))
+            {
+                return conn.Query<T,U, T>(sqlStatement, ( itemA, itemB ) => { itemA.Id };
+            }
+        }
+        */
         public static string GetSQLStatement<T>( )
         {
             var attribute = typeof(T).GetCustomAttribute<SqlStatement>(true);
