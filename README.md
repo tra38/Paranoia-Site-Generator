@@ -19,7 +19,7 @@ In addition, the backup we have was terminated halfway, meaning many standard ta
 ## Learning What Content Is Avaliable And What Was Lost
 The XP-era rulebook was released in 2003, and 25th Anniversary edition was released in 2009. The database backup's last post was in 2006, after several XP supplements were released, but before the announcement of 25th Anniversary Edition.
 
-Mandatory Community Mission #1 (VEG Sector) was recently finished and there were still plans to launch MCM #2 (a tournament about Funball).
+Mandatory Community Mission #1 (VEG Sector) was recently finished and there were still plans to launch MCM #2 (a mission about Funball).
 
 The forum game was still in its golden age, and held two mega-events (Funball and Circus). After 2006 though, activity begin to die out, for both the site and the forum game (the forum game, in particular, required an unsustainable amount of GM activity, which can lead to burnout), eventually causing the forum game to go through a reboot of sorts: five different 'mini-game' Episodes followed by the release of a smaller-scope 'forum game'.
 
