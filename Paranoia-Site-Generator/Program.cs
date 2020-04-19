@@ -25,12 +25,26 @@ namespace Paranoia_Site_Generator
         {
             Console.WriteLine("Hello World!");
 
-            var list = Factory.Build<Forum>();
+            var forumList = Factory.Build<Forum>();
+
+            var categoryList = Factory.Build<Category>().OrderBy( category => category.CatOrder );
+
+            foreach (var category in categoryList)
+            {
+                category.Forums = forumList.Where(forum => forum.CatId == category.CatId).OrderBy( forum => forum.ForumOrder ).ToList( );
+            }
 
             Console.WriteLine("Forums:");
-            foreach (var element in list)
+            foreach (var category in categoryList )
             {
-                Console.WriteLine($"{element.ForumName} - { element.ForumDesc }; topics: { element.ForumTopics }, Forum Id: { element.ForumId }");
+                Console.WriteLine($"{category.CatId} -  { category.CatTitle }:");
+
+                var forums = category.Forums;
+
+                foreach( var element in forums )
+                {
+                    Console.WriteLine($"{element.ForumName} - { element.ForumDesc }; topics: { element.ForumTopics }, Forum Id: { element.ForumId }");
+                }
             }
 
             var itemList = Factory.Build<PotentialItem>();
