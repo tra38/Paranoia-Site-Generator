@@ -1,0 +1,196 @@
+﻿<!-- It is generally good practice to seperate the code into different files, however, for the sake of making it easy for someone else to read the code, I have decided to put all the CSS and JS code into one file. -->
+<style>
+    /* CSS-style modals, from https://codepen.io/Idered/pen/vytkH, more information at https://css-tricks.com/the-checkbox-hack/ and https://stackoverflow.com/questions/33924385/pure-css-modal-popup-without-href */
+    .modal {
+        opacity: 0;
+        visibility: hidden;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        text-align: left;
+        background: rgba(0,0,0, .9);
+        transition: opacity .25s ease;
+    }
+
+    .modal__bg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        cursor: pointer;
+    }
+
+    .modal-state {
+        display: none;
+    }
+
+        .modal-state:checked + .modal {
+            opacity: 1;
+            visibility: visible;
+        }
+
+            .modal-state:checked + .modal .modal__inner {
+                top: 0;
+            }
+
+    .modal__inner {
+        transition: top .25s ease;
+        position: absolute;
+        top: -20%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 50%;
+        margin: auto;
+        overflow: auto;
+        background: #E7FEFF;
+        border-radius: 5px;
+        padding: 1em 2em;
+        height: 50%;
+    }
+
+    .modal__close {
+        position: absolute;
+        right: 1em;
+        top: 1em;
+        width: 1.1em;
+        height: 1.1em;
+        cursor: pointer;
+    }
+
+        .modal__close:after,
+        .modal__close:before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 1.5em;
+            background: #ccc;
+            display: block;
+            transform: rotate(45deg);
+            left: 50%;
+            margin: -3px 0 0 -1px;
+            top: 0;
+        }
+
+        .modal__close:hover:after,
+        .modal__close:hover:before {
+            background: #aaa;
+        }
+
+        .modal__close:before {
+            transform: rotate(-45deg);
+        }
+
+    @media screen and (max-width: 768px) {
+
+        .modal__inner {
+            width: 90%;
+            height: 90%;
+            box-sizing: border-box;
+        }
+    }
+
+    .btn {
+        cursor: pointer;
+        background: #27ae60;
+        display: inline-block;
+        padding: .5em 1em;
+        color: #fff;
+        border-radius: 3px;
+    }
+
+        .btn:hover,
+        .btn:focus {
+            background: #2ecc71;
+        }
+
+        .btn:active {
+            background: #27ae60;
+            box-shadow: 0 1px 2px rgba(0,0,0, .2) inset;
+        }
+</style>
+
+<main></main>
+
+<!-- External Dependencies -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://nightly.datatables.net/buttons/js/dataTables.buttons.js?_=c6b24f8a56e04fcee6105a02f4027462"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.19/api/fnSortNeutral.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
+
+
+<script>
+$(document).ready(function () {
+        var groupColumn = 2;
+        var groupColumnOrder = groupColumn + 1;
+
+        var forumTopics = 4;
+
+        $('#pln_forums').DataTable(
+        {
+            "order": [[groupColumnOrder, "asc"]],
+            "columnDefs": [
+                {
+                    "targets": [groupColumn],
+                    "visible": false,
+                    "searchable": false
+                },
+                {
+                    "targets": [groupColumnOrder],
+                    "visible": false,
+                    "searchable": false
+                },
+                {
+                    "targets": [forumTopics],
+                    "visible": false,
+                    "searchable": true
+                }
+             ],
+//useful for turning categories into 'row groupings',
+//see https://datatables.net/examples/advanced_init/row_grouping.html
+                "drawCallback": function (settings) {
+                    var api = this.api();
+                    var rows = api.rows({ page: 'current' }).nodes();
+                    var last = null;
+
+                    api.column(groupColumn, { page: 'current' }).data().each(function (group, i) {
+
+                        if (last !== group) {
+
+                            $(rows).eq(i).before(
+                                '<tr class="group"><td colspan="5">' + group + '</td></tr>'
+                            );
+                            last = group;
+                        }
+                    });
+                },
+                "dom": 'fBrtip',
+                "buttons": [
+                    {
+                        text: 'Default Order',
+                        action: function (e, dt, node, config) {
+                            $('#pln_forums').dataTable().fnSortNeutral();
+                        }
+                    }
+                ]
+        } );
+
+// Order by the row grouping anytime someone clicks,
+//see https://datatables.net/examples/advanced_init/row_grouping.html
+
+    $('#pln_forums tbody').on('click', 'tr.group', function () {
+        var currentOrder = table.order()[0];
+        if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
+            table.order([groupColumn, 'desc']).draw();
+        }
+        else {
+            table.order([groupColumn, 'asc']).draw();
+        }
+    });
+});
+</script>

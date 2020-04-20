@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 
 namespace Paranoia_Site_Generator
@@ -27,12 +30,47 @@ namespace Paranoia_Site_Generator
 
             var forumList = Factory.Build<Forum>();
 
-            var categoryList = Factory.Build<Category>().OrderBy( category => category.CatOrder );
+            var categoryList = Factory.Build<Category>().OrderBy(category => category.CatOrder).ToList( );
 
             foreach (var category in categoryList)
             {
-                category.Forums = forumList.Where(forum => forum.CatId == category.CatId).OrderBy( forum => forum.ForumOrder ).ToList( );
+                category.Forums = forumList.Where(forum => forum.CatId == category.CatId).OrderBy(forum => forum.ForumOrder).ToList();
             }
+
+            var completeHtml = HtmlGenerator.Build(
+                "pln_forums",
+                new List<string> { "Forum", "Description", "Category", "CategoryOrder", "Forum Topics" },
+                HtmlGenerator.Build( categoryList )
+            );
+
+            Console.WriteLine(completeHtml);
+
+            //var location = System.IO.Path.GetTempPath() + Path.GetTempFileName() + ".html";
+            var location = Path.GetTempPath() + Guid.NewGuid().ToString() + ".html"; ;
+            //var location = System.IO.Path.GetTempPath() + Path.GetTempFileName();
+            //var location = Path.GetTempFileName();
+
+            //var location = Path.GetTempPath( ) + "index.html";
+
+            using (StreamWriter writer = new StreamWriter(location, true))
+            {
+                writer.Write(completeHtml);
+                writer.Dispose();
+            }
+            try
+            {
+                Process p = new Process();
+                p.StartInfo.UseShellExecute = true;
+                p.StartInfo.FileName = location;
+                p.Start();
+                //p.Start("/Applications/Utilities/Terminal.app", $"less { location }");
+                //System.Diagnostics.Process.Start("/Applications/Google Chrome.app/Contents/MacOS/'Google Chrome'", location);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            /*
 
             Console.WriteLine("Forums:");
             foreach (var category in categoryList )
@@ -72,6 +110,7 @@ namespace Paranoia_Site_Generator
                         Posts = group.ToList()
                     } )
                 .ToList( );
+                */
 
             Console.WriteLine("Done.");
             Console.ReadLine();

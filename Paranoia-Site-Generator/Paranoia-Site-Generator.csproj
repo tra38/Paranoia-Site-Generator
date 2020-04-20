@@ -7,10 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MySqlConnector" Version="0.63.2" />
+    <PackageReference Include="MySqlConnector" Version="0.64.0" />
     <PackageReference Include="Dapper" Version="2.0.35" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PLN_Objects\" />
+    <Folder Include="HtmlFiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="HtmlFiles\layout.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="HtmlFiles\layout.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HtmlFiles\layout.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
