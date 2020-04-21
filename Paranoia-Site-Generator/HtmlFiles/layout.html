@@ -126,10 +126,8 @@
 
 <script>
 $(document).ready(function () {
-        var groupColumn = 2;
+        var groupColumn = 3;
         var groupColumnOrder = groupColumn + 1;
-
-        var forumTopics = 4;
 
         $('#pln_forums').DataTable(
         {
@@ -144,11 +142,6 @@ $(document).ready(function () {
                     "targets": [groupColumnOrder],
                     "visible": false,
                     "searchable": false
-                },
-                {
-                    "targets": [forumTopics],
-                    "visible": false,
-                    "searchable": true
                 }
              ],
 //useful for turning categories into 'row groupings',

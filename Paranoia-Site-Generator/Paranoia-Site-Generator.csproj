@@ -16,14 +16,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="HtmlFiles\layout.html" />
+    <None Remove="HtmlFiles\css-modal.html" />
   </ItemGroup>
   <ItemGroup>
     <None Update="HtmlFiles\layout.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="HtmlFiles\css-modal.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="HtmlFiles\layout.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HtmlFiles\css-modal.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
