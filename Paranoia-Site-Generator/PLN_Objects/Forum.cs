@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Paranoia_Site_Generator
+﻿namespace Paranoia_Site_Generator
 {
     [SqlStatement("SELECT * FROM phpbb_forums" )]
     public class Forum : PLN_Object
@@ -27,7 +25,6 @@ namespace Paranoia_Site_Generator
         public int AuthVote;
         public int AuthPollCreate;
         public int AuthAttachments;
-        public List<List<Post>> Topics;
 
         public int Id { get => ForumId; }
     }

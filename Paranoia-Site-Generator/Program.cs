@@ -30,23 +30,6 @@ namespace Paranoia_Site_Generator
 
             var forumList = Factory.Build<Forum>();
 
-            var posts = Factory.Build<Post>().OrderBy( post => post.PostText );
-            var postsLists = posts.GroupBy(post => new { post.TopicId, post.ForumId })
-                .Select(group => new
-                {
-                    group.Key.TopicId,
-                    group.Key.ForumId,
-                    Posts = group.ToList()
-                })
-                .ToList();
-
-            foreach( var forum in forumList )
-            {
-                forum.Topics = postsLists.Where(topic => topic.ForumId == forum.ForumId)
-                                          .Select(topic => topic.Posts)
-                                          .ToList();
-            }
-
             var categoryList = Factory.Build<Category>().OrderBy(category => category.CatOrder).ToList( );
 
             foreach (var category in categoryList)
@@ -54,9 +37,9 @@ namespace Paranoia_Site_Generator
                 category.Forums = forumList.Where(forum => forum.CatId == category.CatId).OrderBy(forum => forum.ForumOrder).ToList();
             }
 
-            var completeHtml = HtmlGenerator.BuildWithLayout(
+            var completeHtml = HtmlGenerator.Build(
                 "pln_forums",
-                new List<string> { "Topics", "Forum", "Description", "Category", "CategoryOrder" },
+                new List<string> { "Forum", "Description", "Category", "CategoryOrder", "Forum Topics" },
                 HtmlGenerator.Build( categoryList )
             );
 
