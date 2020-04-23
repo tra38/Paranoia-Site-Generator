@@ -122,14 +122,10 @@
 <script src="https://cdn.datatables.net/plug-ins/1.10.19/api/fnSortNeutral.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
-
-
 <script>
 $(document).ready(function () {
-        var groupColumn = 2;
+        var groupColumn = 3;
         var groupColumnOrder = groupColumn + 1;
-
-        var forumTopics = 4;
 
         $('#pln_forums').DataTable(
         {
@@ -144,11 +140,6 @@ $(document).ready(function () {
                     "targets": [groupColumnOrder],
                     "visible": false,
                     "searchable": false
-                },
-                {
-                    "targets": [forumTopics],
-                    "visible": false,
-                    "searchable": true
                 }
              ],
 //useful for turning categories into 'row groupings',
