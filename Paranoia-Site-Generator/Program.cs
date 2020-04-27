@@ -23,6 +23,23 @@ namespace Paranoia_Site_Generator
 
             //For now, we should roll our own static site generator.
         */
+        static string GetSolutionPath( )
+        {
+            /*
+            string assemblyname = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            string path = "";
+            using (var stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(assemblyname + ".solutionpath.txt"))
+            {
+                using (var sr = new StreamReader(stream))
+                {
+                    path = sr.ReadToEnd().Trim();
+                }
+            }
+
+            return path;
+            */
+            return File.ReadAllText("solutionpath.txt").Trim();
+        }
 
         static void Main(string[] args)
         {
@@ -30,7 +47,7 @@ namespace Paranoia_Site_Generator
 
             var forumList = Factory.Build<Forum>();
 
-            var posts = Factory.Build<Post>().OrderBy( post => post.PostText );
+            var posts = Factory.Build<Post>().OrderBy( post => post.PostTime );
             var postsLists = posts.GroupBy(post => new { post.TopicId, post.ForumId })
                 .Select(group => new
                 {
@@ -63,13 +80,17 @@ namespace Paranoia_Site_Generator
             Console.WriteLine(completeHtml);
 
             //var location = System.IO.Path.GetTempPath() + Path.GetTempFileName() + ".html";
-            var location = Path.GetTempPath() + Guid.NewGuid().ToString() + ".html"; ;
+            //var location = Path.GetTempPath() + Guid.NewGuid().ToString() + ".html"; ;
             //var location = System.IO.Path.GetTempPath() + Path.GetTempFileName();
             //var location = Path.GetTempFileName();
 
             //var location = Path.GetTempPath( ) + "index.html";
 
-            using (StreamWriter writer = new StreamWriter(location, true))
+            Directory.CreateDirectory(GetSolutionPath() + "docs/");
+
+            var location = GetSolutionPath() + "docs/index.html";
+
+            using (StreamWriter writer = new StreamWriter(location, false))
             {
                 writer.Write(completeHtml);
                 writer.Dispose();
@@ -80,8 +101,6 @@ namespace Paranoia_Site_Generator
                 p.StartInfo.UseShellExecute = true;
                 p.StartInfo.FileName = location;
                 p.Start();
-                //p.Start("/Applications/Utilities/Terminal.app", $"less { location }");
-                //System.Diagnostics.Process.Start("/Applications/Google Chrome.app/Contents/MacOS/'Google Chrome'", location);
             }
             catch (Exception ex)
             {

@@ -1,5 +1,6 @@
 ﻿<!-- It is generally good practice to seperate the code into different files, however, for the sake of making it easy for someone else to read the code, I have decided to put all the CSS and JS code into one file. -->
 <style>
+
     /* CSS-style modals, from https://codepen.io/Idered/pen/vytkH, more information at https://css-tricks.com/the-checkbox-hack/ and https://stackoverflow.com/questions/33924385/pure-css-modal-popup-without-href */
     .modal {
         opacity: 0;
@@ -111,9 +112,17 @@
             background: #27ae60;
             box-shadow: 0 1px 2px rgba(0,0,0, .2) inset;
         }
+
+    .hidden {
+        display: none;
+    }
 </style>
 
-<main></main>
+<div class="main hidden">
+    <main></main>
+</div>
+
+<progress class="progress_bar" max="100" value="25"></progress>
 
 <!-- External Dependencies -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -123,27 +132,41 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
 <script>
-$(document).ready(function () {
+    $(document).ready(function () {
+
+        function update(percentageNumber) {
+            $(".progress_bar").val(percentageNumber);
+            if (percentageNumber == 100) {
+                $(".main").show();
+                $(".progress_bar").hide();
+            }
+        }
+
+        update(30);
+
         var groupColumn = 3;
         var groupColumnOrder = groupColumn + 1;
 
-        $('#pln_forums').DataTable(
-        {
-            "order": [[groupColumnOrder, "asc"]],
-            "columnDefs": [
-                {
-                    "targets": [groupColumn],
-                    "visible": false,
-                    "searchable": false
-                },
-                {
-                    "targets": [groupColumnOrder],
-                    "visible": false,
-                    "searchable": false
-                }
-             ],
-//useful for turning categories into 'row groupings',
-//see https://datatables.net/examples/advanced_init/row_grouping.html
+        update(35);
+
+        $('.pln_forums').DataTable(
+            {
+                "order": [[groupColumnOrder, "asc"]],
+                "columnDefs": [
+                    {
+                        "targets": [groupColumn],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    {
+                        "targets": [groupColumnOrder],
+                        "visible": false,
+                        "searchable": false
+                    },
+                ],
+                "searching": false,
+                //useful for turning categories into 'row groupings',
+                //see https://datatables.net/examples/advanced_init/row_grouping.html
                 "drawCallback": function (settings) {
                     var api = this.api();
                     var rows = api.rows({ page: 'current' }).nodes();
@@ -165,23 +188,28 @@ $(document).ready(function () {
                     {
                         text: 'Default Order',
                         action: function (e, dt, node, config) {
-                            $('#pln_forums').dataTable().fnSortNeutral();
+                            $('.pln_forums').dataTable().fnSortNeutral();
                         }
                     }
                 ]
-        } );
+            });
 
-// Order by the row grouping anytime someone clicks,
-//see https://datatables.net/examples/advanced_init/row_grouping.html
+        update(50);
 
-    $('#pln_forums tbody').on('click', 'tr.group', function () {
-        var currentOrder = table.order()[0];
-        if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
-            table.order([groupColumn, 'desc']).draw();
-        }
-        else {
-            table.order([groupColumn, 'asc']).draw();
-        }
-    });
-});
-</script>
+        // Order by the row grouping anytime someone clicks,
+        //see https://datatables.net/examples/advanced_init/row_grouping.html
+
+        $('.pln_forums tbody').on('click', 'tr.group', function () {
+            var currentOrder = table.order()[0];
+            if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
+                table.order([groupColumn, 'desc']).draw();
+            }
+            else {
+                table.order([groupColumn, 'asc']).draw();
+            }
+        });
+
+        update(75);
+
+        update(100);
+    });</script>

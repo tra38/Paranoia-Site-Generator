@@ -23,7 +23,7 @@ namespace Paranoia_Site_Generator
         public static string Build(Forum forum)
         {
             var body = string.Join("",forum.Topics.Select(topic => $"<tr><td class='details-control'>{ Modal(Build(topic), topic.TopicId( ))}</th><td>{topic.TopicName( )}<td></tr>"));
-            return BuildTable($"forum_{forum.ForumId}", new List<string> { "View Topic", "Title" }, body);
+            return BuildTable($"forum", new List<string> { "View Topic", "Title" }, body);
         }
 
         public static string Modal( string content, string checkboxName )
@@ -38,19 +38,19 @@ namespace Paranoia_Site_Generator
         public static string Build(List<Post> topic)
         {
             var body = string.Join("", topic.Select(post => $"<tr><td>{post.PosterId}</td><td>{post.PostText}<td></tr>"));
-            return BuildTable($"topic_{topic.First().PostId}", new List<string> { "Poster Id", "Post Content" }, body );
+            return BuildTable($"topic", new List<string> { "Poster Id", "Post Content" }, body );
         }
 
-        public static string BuildWithLayout( string tableId, List<string> tableColumnNames, string tableRows )
+        public static string BuildWithLayout( string tableClass, List<string> tableColumnNames, string tableRows )
         {
-            return BuildWithLayout(BuildTable( tableId, tableColumnNames, tableRows ));
+            return BuildWithLayout(BuildTable( tableClass, tableColumnNames, tableRows ));
         }
 
-        public static string BuildTable( string tableId, List<string> tableColumnNames, string tableRows )
+        public static string BuildTable( string tableClass, List<string> tableColumnNames, string tableRows )
         {
             var tableColumns = string.Join("", tableColumnNames.Select(name => $"<th>{name}</th>"));
 
-            var table = @$"<table id=""{ tableId }"" >" +
+            var table = @$"<table class=""{ tableClass }"" >" +
                 $"<thead><tr>{tableColumns}</tr><tbody>{tableRows}</tbody></table>";
 
             return table;
