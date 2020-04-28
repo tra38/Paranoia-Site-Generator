@@ -19,7 +19,17 @@ namespace Paranoia_Site_Generator
             { 413, "Aratos" },
             { 91, "Elle-R-KNO" },
             { 14, "Mike-U-LEM" },
-            { 396, "Biggles" }
+            { 396, "Biggles" },
+            { 89, "Moto42" },
+            { 186, "Adamantyr" },
+            { 261, "Dystopian Rhetoric" },
+            { 506, "Adam-R-LON-1" },
+            { 878, "Tombking" },
+            { 1048, "Lord_Dourden" },
+            { 966, "Bee-R-CAN" },
+            { 582, "DashRender" },
+            { 152, "Allandaros" },
+            { 595, "Zild" }
         };
 
         public static string Username(this int userId)
