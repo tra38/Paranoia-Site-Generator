@@ -31,7 +31,9 @@ namespace Paranoia_Site_Generator
             { 152, "Allandaros" },
             { 595, "Zild" },
             { 90, "greymist08" },
-            { 487, "Danforth" }
+            { 487, "Danforth" },
+            { 414, "2DMan" },
+            { 421, "GirdagFireskull" }
         };
 
         public static string Username(this int userId)
