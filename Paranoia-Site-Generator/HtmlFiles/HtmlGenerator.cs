@@ -37,7 +37,7 @@ namespace Paranoia_Site_Generator
 
         public static string Build(List<Post> topic)
         {
-            var body = string.Join("", topic.Select(post => $"<tr><td>{post.PosterId}</td><td>{post.PostText}<td></tr>"));
+            var body = string.Join("", topic.Select(post => $"<tr><td>{post.PosterId}</td><td class='post__text'>{post.PostText}<td></tr>"));
             return BuildTable($"topic", new List<string> { "Poster Id", "Post Content" }, body );
         }
 
