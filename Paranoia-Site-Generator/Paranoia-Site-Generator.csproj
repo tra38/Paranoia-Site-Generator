@@ -11,7 +11,7 @@
       <CustomCommands>
         <Command>
           <type>BeforeBuild</type>
-          <command>echo $(SolutionDir) &gt; solutionpath.txt
+          <command>echo /Users/tariqali/Projects/Paranoia-Site-Generator/ &gt; solutionpath.txt
 </command>
           <workingdir>${ProjectDir}</workingdir>
           <externalConsole>True</externalConsole>
