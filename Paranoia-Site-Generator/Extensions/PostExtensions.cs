@@ -29,7 +29,9 @@ namespace Paranoia_Site_Generator
             { 966, "Bee-R-CAN" },
             { 582, "DashRender" },
             { 152, "Allandaros" },
-            { 595, "Zild" }
+            { 595, "Zild" },
+            { 90, "greymist08" },
+            { 487, "Danforth" }
         };
 
         public static string Username(this int userId)
