@@ -16,7 +16,10 @@ namespace Paranoia_Site_Generator
             { 197, "Allen Varney" },
             { 165, "Takyn-U-RUN" },
             { 698, "saulres" },
-            { 413, "Aratos" }
+            { 413, "Aratos" },
+            { 91, "Elle-R-KNO" },
+            { 14, "Mike-U-LEM" },
+            { 396, "Biggles" }
         };
 
         public static string Username(this int userId)
