@@ -1,5 +1,8 @@
-﻿<!-- It is generally good practice to seperate the code into different files, however, for the sake of making it easy for someone else to read the code, I have decided to put all the CSS and JS code into one file. -->
+﻿<!-- Prevent Google from crawling this site -->
+<meta name="robots" content="noindex,nofollow">
+<!-- It is generally good practice to seperate the code into different files, however, for the sake of making it easy for someone else to read the code, I have decided to put all the CSS and JS code into one file. -->
 <style>
+
     .post__text {
         white-space: pre-wrap;
         word-wrap: break-word
@@ -135,8 +138,7 @@
 <script src="https://cdn.datatables.net/plug-ins/1.10.19/api/fnSortNeutral.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
-<script>
-    $(document).ready(function () {
+<script>$(document).ready(function () {
 
         function update(percentageNumber) {
             $(".progress_bar").val(percentageNumber);
