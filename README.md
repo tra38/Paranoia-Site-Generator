@@ -34,6 +34,6 @@ Forums' activity did appear to peter out after 2006 (even the release of 25th An
     - Some of these societies are marked as 'special'. I don't know why they're special, but my best guess is that users are prevented from joining, either because they're "exclusive" (like Illumaniti) or were destroyed by in-game events. Society Points were acquired by participating in a 'MacGuffin hunt' event that all societies participated in for a brief period of time. Each society had a 'leader account' (the player who really controlled the society), and an 'alt leader account' (the 'disguise' that the leader account used to protect their identity).
 
 ## Non-Archived Content
-- Players can select their secret society, mutant power, and service group, based on content from "Paranoia XP". The secret society table contains info on who runs the secret society, which may be somewhat useful to archive (for those who want to study Phase IV in depth).
+- Players can select their mutant powers and service group, based on content from "Paranoia XP". Only one mutant power was marked as special - Machine Empathy.
 - Private messages will not be archived, to protect people's privacy.
 - Forum ranks are interesting in a historical sense, but aren't really useful for someone running a tabletop RPG.
