@@ -34,7 +34,8 @@ namespace Paranoia_Site_Generator
             { 487, "Danforth" },
             { 414, "2DMan" },
             { 421, "GirdagFireskull" },
-            { 231, "Occam" }
+            { 231, "Occam" },
+            { 257, "Expend-I-BLE" },
         };
 
         public static string Username(this int userId)
