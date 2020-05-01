@@ -8,6 +8,15 @@ namespace Paranoia_Site_Generator
 {
     class Program
     {
+        static void BuildWebsite( string name, Func<string> func)
+        {
+            var completeHtml = func( );
+
+            var indexLocation = CreateFile( name, completeHtml );
+
+            OpenFile(indexLocation);
+        }
+
         static string GetSolutionPath( )
             => File.ReadAllText("solutionpath.txt").Trim();
 
@@ -96,21 +105,26 @@ namespace Paranoia_Site_Generator
             return completeHtml;
         }
 
+        static string CreateSecretSocieties()
+        {
+            var societies = Factory.Build<SecretSociety>().ToList( );
+
+            var completeHtml = HtmlGenerator.BuildWithLayout(
+                    "items",
+                    new List<string> { "Name", "Special?", "Society Points", "Leader Account", "Alt. Leader Account" },
+                    HtmlGenerator.Build(societies)
+                );
+
+            return completeHtml;
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
 
-            var completeHtml = CreateIndex();
-
-            var indexLocation = CreateFile("index", completeHtml);
-
-            OpenFile(indexLocation);
-
-            var completeHtmlTwo = CreateItems();
-
-            var indexLocationTwo = CreateFile("items", completeHtmlTwo);
-
-            OpenFile(indexLocationTwo);
+            BuildWebsite("index", CreateIndex);
+            BuildWebsite("items", CreateItems);
+            BuildWebsite("societies", CreateSecretSocieties);
 
             //Console.WriteLine(completeHtml);
 

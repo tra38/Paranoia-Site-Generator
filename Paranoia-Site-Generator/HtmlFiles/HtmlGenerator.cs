@@ -7,6 +7,20 @@ namespace Paranoia_Site_Generator
 {
     public static class HtmlGenerator
     {
+        public static string Build(List<SecretSociety> societies)
+            => string.Join(
+                "",
+                societies.Select(society =>
+                    $"<tr>" +
+                        $"<td>{society.SecsocName}</td>" +
+                        $"<td>{ (society.SecsocSpecial == 1 ? "Yes" : "No" )} </td>" +
+                        $"<td>{ society.SecsocPoints }</td>" +
+                        $"<td>{ society.LeaderId.Username() }</td>" +
+                        $"<td>{ society.AltLeaderId.Username() }</td>" +
+                    $"</tr>"
+                )
+              );
+
         public static string Build(List<IItem> items)
             => string.Join(
                 "",
