@@ -126,9 +126,6 @@ namespace Paranoia_Site_Generator
             BuildWebsite("items", CreateItems);
             BuildWebsite("societies", CreateSecretSocieties);
 
-            BuildWebsite("society", CreateSecretSocieties);
-
-
             //Console.WriteLine(completeHtml);
 
             //var location = System.IO.Path.GetTempPath() + Path.GetTempFileName() + ".html";
