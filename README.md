@@ -27,7 +27,7 @@ Forums' activity did appear to peter out after 2006 (even the release of 25th An
 
 ## Archived Content
 - [PLN Forums](http://tra38.github.io/Paranoia-Site-Generator/index.html)
-  - Data is from 2003 to 2006. Searching is currnetly disabled due to performance reasons - will attempt to fix.
+  - Data is from 2003 to 2006. Searching is currently disabled due to performance reasons - will attempt to fix.
 - [PLN Items](https://tra38.github.io/Paranoia-Site-Generator/items.html)
    - The first set of items are 'suggested' items that were proposed by forum users for use in the Paranoia-Live forum game, followed by a second set of 'implemented' items that were actually avaliable in the forum game. Some items have been both suggested and implemented (you can find them by searching the table - 'Plasma Generator' and 'Insta-Code' are good examples). Searching is enabled for this table, as it won't hurt performance at all.
 - [PLN Societies](https://tra38.github.io/Paranoia-Site-Generator/societies.html)
