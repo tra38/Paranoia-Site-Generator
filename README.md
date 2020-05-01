@@ -32,6 +32,6 @@ Forums' activity did appear to peter out after 2006 (even the release of 25th An
    - The first set of items are 'suggested' items that were proposed by forum users for use in the Paranoia-Live forum game, followed by a second set of 'implemented' items that were actually avaliable in the forum game. Some items have been both suggested and implemented (you can find them by searching the table - 'Plasma Generator' and 'Insta-Code' are good examples). Searching is enabled for this table, as it won't hurt performance at all.
 
 ## Non-Archived Content
-    - Players can select their secret society, mutant power, and service group, based on content from "Paranoia XP". The secret society table contains info on who runs the secret society, which may be somewhat useful to archive (for those who want to study Phase IV in depth).
-    - Private messages will not be archived, to protect people's privacy.
-    - Forum ranks are interesting in a historical sense, but aren't really useful for a tabletop RPG.
+- Players can select their secret society, mutant power, and service group, based on content from "Paranoia XP". The secret society table contains info on who runs the secret society, which may be somewhat useful to archive (for those who want to study Phase IV in depth).
+- Private messages will not be archived, to protect people's privacy.
+- Forum ranks are interesting in a historical sense, but aren't really useful for someone running a tabletop RPG.
