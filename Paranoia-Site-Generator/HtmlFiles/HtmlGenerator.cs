@@ -13,7 +13,7 @@ namespace Paranoia_Site_Generator
                 items.Select(item =>
                     $"<tr>" +
                         $"<td>{item.ItemName( )}</td>" +
-                        $"<td>{HttpUtility.HtmlEncode( item.ItemDescription( ) )}</td>" +
+                        $"<td class='post__text'>{HttpUtility.HtmlEncode( item.ItemDescription( ) )}</td>" +
                         $"<td>{item.ItemCost( )} Credits</td>" +
                         $"<td>{item.ItemClearance( ).ClearanceName( )}</td>" +
                         $"<td>{item.ItemSuggestor( )}</td>" +
