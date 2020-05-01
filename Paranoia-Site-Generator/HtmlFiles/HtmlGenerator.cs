@@ -1,11 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web;
 
 namespace Paranoia_Site_Generator
 {
     public static class HtmlGenerator
     {
+        public static string Build(List<IItem> items)
+            => string.Join(
+                "",
+                items.Select(item =>
+                    $"<tr>" +
+                        $"<td>{item.ItemName( )}</td>" +
+                        $"<td>{HttpUtility.HtmlEncode( item.ItemDescription( ) )}</td>" +
+                        $"<td>{item.ItemCost( )} Credits</td>" +
+                        $"<td>{item.ItemClearance( )}</td>" +
+                        $"<td>{item.ItemSuggestor( )}</td>" +
+                    $"</tr>"
+                )
+              );
+
         public static string Build(Category category)
         => string.Join(
                 "",

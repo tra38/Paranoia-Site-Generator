@@ -8,46 +8,44 @@ namespace Paranoia_Site_Generator
 {
     class Program
     {
-        /*
-            //Stories:
-            //1) Gather data.
-            //2) Populate static site with data.
-
-            //Should the data simply be transformed into txt files? And then
-            //I transfer said txt files to a static site generator?
-            //Or do I roll my own static site generator?
-
-            //Seems there's too many specific limits, and I need the practice,
-            //so I'll generate my own static site generator. Time to look
-            //at the pattern book.
-
-            //For now, we should roll our own static site generator.
-        */
         static string GetSolutionPath( )
+            => File.ReadAllText("solutionpath.txt").Trim();
+
+        static string CreateFile(string fileName, string completeHtml)
         {
-            /*
-            string assemblyname = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
-            string path = "";
-            using (var stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(assemblyname + ".solutionpath.txt"))
+            Directory.CreateDirectory(GetSolutionPath() + "docs/");
+
+            var location = GetSolutionPath() + $"docs/{fileName}.html";
+
+            using (StreamWriter writer = new StreamWriter(location, false))
             {
-                using (var sr = new StreamReader(stream))
-                {
-                    path = sr.ReadToEnd().Trim();
-                }
+                writer.Write(completeHtml);
+                writer.Dispose();
             }
 
-            return path;
-            */
-            return File.ReadAllText("solutionpath.txt").Trim();
+            return location;
         }
 
-        static void Main(string[] args)
+        static void OpenFile(string fileName)
         {
-            Console.WriteLine("Hello World!");
+            try
+            {
+                Process p = new Process();
+                p.StartInfo.UseShellExecute = true;
+                p.StartInfo.FileName = fileName;
+                p.Start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
 
+        static string CreateIndex( )
+        {
             var forumList = Factory.Build<Forum>();
 
-            var posts = Factory.Build<Post>().OrderBy( post => post.PostTime );
+            var posts = Factory.Build<Post>().OrderBy(post => post.PostTime);
             var postsLists = posts.GroupBy(post => new { post.TopicId, post.ForumId })
                 .Select(group => new
                 {
@@ -57,14 +55,14 @@ namespace Paranoia_Site_Generator
                 })
                 .ToList();
 
-            foreach( var forum in forumList )
+            foreach (var forum in forumList)
             {
                 forum.Topics = postsLists.Where(topic => topic.ForumId == forum.ForumId)
                                           .Select(topic => topic.Posts)
                                           .ToList();
             }
 
-            var categoryList = Factory.Build<Category>().OrderBy(category => category.CatOrder).ToList( );
+            var categoryList = Factory.Build<Category>().OrderBy(category => category.CatOrder).ToList();
 
             foreach (var category in categoryList)
             {
@@ -74,10 +72,47 @@ namespace Paranoia_Site_Generator
             var completeHtml = HtmlGenerator.BuildWithLayout(
                 "pln_forums",
                 new List<string> { "Topics", "Forum", "Description", "Category", "CategoryOrder" },
-                HtmlGenerator.Build( categoryList )
+                HtmlGenerator.Build(categoryList)
             );
 
-            Console.WriteLine(completeHtml);
+            return completeHtml;
+        }
+
+        static string CreateItems()
+        {
+            var potentialItems = Factory.Build<PotentialItem>();
+            var actualItems = Factory.Build<Item>();
+
+            var itemsList = new List<IItem>();
+            itemsList.AddRange(potentialItems);
+            itemsList.AddRange( actualItems );
+
+            var completeHtml = HtmlGenerator.BuildWithLayout(
+                    "items",
+                    new List<string> { "Name", "Description", "Cost", "Clearance", "Suggestor" },
+                    HtmlGenerator.Build(itemsList)
+                );
+
+            return completeHtml;
+        }
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+
+            var completeHtml = CreateIndex();
+
+            var indexLocation = CreateFile("index", completeHtml);
+
+            OpenFile(indexLocation);
+
+            var completeHtmlTwo = CreateItems();
+
+            var indexLocationTwo = CreateFile("items", completeHtmlTwo);
+
+            OpenFile(indexLocationTwo);
+
+            //Console.WriteLine(completeHtml);
 
             //var location = System.IO.Path.GetTempPath() + Path.GetTempFileName() + ".html";
             //var location = Path.GetTempPath() + Guid.NewGuid().ToString() + ".html"; ;
@@ -86,6 +121,7 @@ namespace Paranoia_Site_Generator
 
             //var location = Path.GetTempPath( ) + "index.html";
 
+            /*
             Directory.CreateDirectory(GetSolutionPath() + "docs/");
 
             var location = GetSolutionPath() + "docs/index.html";
@@ -106,6 +142,7 @@ namespace Paranoia_Site_Generator
             {
                 Console.WriteLine(ex);
             }
+            */
             /*
 
             Console.WriteLine("Forums:");

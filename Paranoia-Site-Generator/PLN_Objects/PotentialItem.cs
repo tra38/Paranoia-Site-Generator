@@ -1,7 +1,7 @@
 ﻿namespace Paranoia_Site_Generator
 {
     [SqlStatement("SELECT * FROM phpbb_ac_potitems")]
-    public class PotentialItem : PLN_Object
+    public class PotentialItem : PLN_Object, IItem
     {
         public int PotitemId;
         public string PotitemName;
@@ -20,5 +20,21 @@
         public string ItemDescription => PotitemDescription;
 
         public int Id { get => ItemId; }
+
+        public int ItemAction() => ItemId;
+
+        public string ItemSuggestor() => $"Suggested by { PotitemUser.Username( ) }";
+
+        int IItem.ItemClearance() => ItemClearance;
+
+        int IItem.ItemCost() => ItemCost;
+
+        int IItem.ItemDecay() => ItemDecay;
+
+        string IItem.ItemDescription() => ItemDescription;
+
+        int IItem.ItemId() => ItemId;
+
+        string IItem.ItemName() => ItemName;
     }
 }

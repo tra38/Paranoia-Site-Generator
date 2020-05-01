@@ -177,6 +177,12 @@
                 "dom": 'frtip'
             });
 
+        $(".items").DataTable(
+            {
+                "ordering": false
+            }
+        );
+
         update(50);
 
         $(".pln_forums").css('width', '')
