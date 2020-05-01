@@ -30,6 +30,8 @@ Forums' activity did appear to peter out after 2006 (even the release of 25th An
   - Data is from 2003 to 2006. Searching is currnetly disabled due to performance reasons - will attempt to fix.
 - [PLN Items](https://tra38.github.io/Paranoia-Site-Generator/items.html)
    - The first set of items are 'suggested' items that were proposed by forum users for use in the Paranoia-Live forum game, followed by a second set of 'implemented' items that were actually avaliable in the forum game. Some items have been both suggested and implemented (you can find them by searching the table - 'Plasma Generator' and 'Insta-Code' are good examples). Searching is enabled for this table, as it won't hurt performance at all.
+- [PLN Societies](https://tra38.github.io/Paranoia-Site-Generator/societies.html)
+    - Some of these societies are marked as 'special'. I don't know why they're special, but my best guess is that users are prevented from joining, either because they're "exclusive" (like Illumaniti) or were destroyed by in-game events. Society Points were acquired by participating in a 'MacGuffin hunt' event that all societies participated in for a brief period of time. Each society had a 'leader account' (the player who really controlled the society), and an 'alt leader account' (the 'disguise' that the leader account used to protect their identity).
 
 ## Non-Archived Content
 - Players can select their secret society, mutant power, and service group, based on content from "Paranoia XP". The secret society table contains info on who runs the secret society, which may be somewhat useful to archive (for those who want to study Phase IV in depth).
