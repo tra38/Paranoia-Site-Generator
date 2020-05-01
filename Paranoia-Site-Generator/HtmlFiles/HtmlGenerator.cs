@@ -15,7 +15,7 @@ namespace Paranoia_Site_Generator
                         $"<td>{item.ItemName( )}</td>" +
                         $"<td>{HttpUtility.HtmlEncode( item.ItemDescription( ) )}</td>" +
                         $"<td>{item.ItemCost( )} Credits</td>" +
-                        $"<td>{item.ItemClearance( )}</td>" +
+                        $"<td>{item.ItemClearance( ).ClearanceName( )}</td>" +
                         $"<td>{item.ItemSuggestor( )}</td>" +
                     $"</tr>"
                 )
