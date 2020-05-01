@@ -24,3 +24,14 @@ Mandatory Community Mission #1 (VEG Sector) was recently finished and there were
 The forum game was still in its golden age, and held two mega-events (Funball and Circus). After 2006 though, activity begin to die out, for both the site and the forum game (the forum game, in particular, required an unsustainable amount of GM activity, which can lead to burnout), eventually causing the forum game to go through a reboot of sorts: five different 'mini-game' Episodes followed by the release of a smaller-scope 'forum game'.
 
 Forums' activity did appear to peter out after 2006 (even the release of 25th Anniversary Edition was not enough to bring activity back), but the site did survive long enough to discuss the 2014 Kickstarter for PARANOIA Red-Clearance Edition (with some discussion being made over whether it was a good idea to change Alpha Complex's enemy from Communists to Terrorists). Aratos claimed that new people were signing up every day until Jazzer stopped paying for webhosting without notice, preventing people from recovering the data in time.
+
+## Archived Content
+- [PLN Forums](http://tra38.github.io/Paranoia-Site-Generator/index.html)
+  - Data is from 2003 to 2006. Searching is currnetly disabled due to performance reasons - will attempt to fix.
+- [PLN Items](https://tra38.github.io/Paranoia-Site-Generator/items.html)
+   - The first set of items are 'suggested' items that were proposed by forum users for use in the Paranoia-Live forum game, followed by a second set of 'implemented' items that were actually avaliable in the forum game. Some items have been both suggested and implemented (you can find them by searching the table - 'Plasma Generator' and 'Insta-Code' are good examples). Searching is enabled for this table, as it won't hurt performance at all.
+
+## Non-Archived Content
+    - Players can select their secret society, mutant power, and service group, based on content from "Paranoia XP". The secret society table contains info on who runs the secret society, which may be somewhat useful to archive (for those who want to study Phase IV in depth).
+    - Private messages will not be archived, to protect people's privacy.
+    - Forum ranks are interesting in a historical sense, but aren't really useful for a tabletop RPG.
