@@ -36,6 +36,8 @@ namespace Paranoia_Site_Generator
             { 421, "GirdagFireskull" },
             { 231, "Occam" },
             { 257, "Expend-I-BLE" },
+            { 1106, "Phial" },
+            { 179, "Fr8monkey" }
         };
 
         public static string Username(this int userId)
