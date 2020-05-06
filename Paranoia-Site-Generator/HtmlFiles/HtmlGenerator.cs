@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace Paranoia_Site_Generator
@@ -51,7 +52,7 @@ namespace Paranoia_Site_Generator
 
         public static string Build(Forum forum)
         {
-            var body = string.Join("",forum.Topics.Select(topic => $"<tr><td class='details-control'>{ Modal(Build(topic), topic.TopicId( ))}</th><td>{topic.TopicName( )}<td></tr>"));
+            var body = string.Join("",forum.Topics.Select(topic => $"<tr><td class='details-control'>{ Modal( Build( topic ), topic.TopicName( ) )}</th><td>{topic.TopicName( )}<td></tr>"));
             return BuildTable($"forum", new List<string> { "View Topic", "Title" }, body);
         }
 
@@ -65,10 +66,7 @@ namespace Paranoia_Site_Generator
             => string.Join( "", categories.Select(category => Build(category)) );
 
         public static string Build(List<Post> topic)
-        {
-            var body = string.Join("", topic.Select(post => $"<tr><td>{post.PosterId.Username( )}</td><td class='post__text'>{post.PostText}<td></tr>"));
-            return BuildTable($"topic", new List<string> { "Poster Name/Id", "Post Content" }, body );
-        }
+            => string.Join("<hr />", topic.Select(post => $"<p class='post__text'><strong>Poster Name/Id</strong>: {post.PosterId.Username( ) }<p class='post__text'><strong>Post Content</strong>:<p>{post.PostText.Replace("\n","<p>")}"));
 
         public static string BuildWithLayout( string tableClass, List<string> tableColumnNames, string tableRows )
         {
