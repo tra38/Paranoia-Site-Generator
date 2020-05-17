@@ -41,7 +41,7 @@ namespace Paranoia_Site_Generator
                 "",
                 category.Forums.Select(forum =>
                          $"<tr>" +
-                                $"<th class='details-control'>{ Modal(Build(forum), forum.ForumName)}</th>" +
+                                $"<th class='details-control'>{ Modal(Build(forum), $"forum_{forum.ForumId}")}</th>" +
                                 $"<th>{forum.ForumName}</th>" +
                                 $"<th>{forum.ForumDesc}</th>" +
                                 $"<th>{category.CatTitle }</th>" +
@@ -52,7 +52,7 @@ namespace Paranoia_Site_Generator
 
         public static string Build(Forum forum)
         {
-            var body = string.Join("",forum.Topics.Select(topic => $"<tr><td class='details-control'>{ Modal( Build( topic ), topic.TopicName( ) )}</th><td>{topic.TopicName( )}<td></tr>"));
+            var body = string.Join("",forum.Topics.Select(topic => $"<tr><td class='details-control'>{ Modal( Build( topic ), $"topic_{topic.TopicId( )}" )}</th><td>{topic.TopicName( )}<td></tr>"));
             return BuildTable($"forum", new List<string> { "View Topic", "Title" }, body);
         }
 
