@@ -37,7 +37,8 @@ namespace Paranoia_Site_Generator
             { 231, "Occam" },
             { 257, "Expend-I-BLE" },
             { 1106, "Phial" },
-            { 179, "Fr8monkey" }
+            { 179, "Fr8monkey" },
+            { 107, "Standback" }
         };
 
         public static string Username(this int userId)
