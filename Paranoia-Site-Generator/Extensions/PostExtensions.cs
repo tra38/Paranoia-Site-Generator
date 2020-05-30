@@ -38,7 +38,8 @@ namespace Paranoia_Site_Generator
             { 257, "Expend-I-BLE" },
             { 1106, "Phial" },
             { 179, "Fr8monkey" },
-            { 107, "Standback" }
+            { 107, "Standback" },
+            { 237, "Laughing Penguin" }
         };
 
         public static string Username(this int userId)
