@@ -39,7 +39,9 @@ namespace Paranoia_Site_Generator
             { 1106, "Phial" },
             { 179, "Fr8monkey" },
             { 107, "Standback" },
-            { 237, "Laughing Penguin" }
+            { 237, "Laughing Penguin" },
+            { 967, "Whyleek-I-OTE" },
+            { 658, "Gor-R-ILA-1" }
         };
 
         public static string Username(this int userId)
