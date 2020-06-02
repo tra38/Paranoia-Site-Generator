@@ -41,7 +41,8 @@ namespace Paranoia_Site_Generator
             { 107, "Standback" },
             { 237, "Laughing Penguin" },
             { 967, "Whyleek-I-OTE" },
-            { 658, "Gor-R-ILA-1" }
+            { 658, "Gor-R-ILA-1" },
+            { 953, "Eric Zawadzki" }
         };
 
         public static string Username(this int userId)
